@@ -38,8 +38,8 @@ public class ZipkinRSocketCollector extends AbstractRSocket {
 
     @Override
     public Mono<Void> fireAndForget(final Payload payload) {
-        metrics.incrementMessages();
-        metrics.incrementBytes(payload.data().readableBytes());
+        //metrics.incrementMessages();
+        //metrics.incrementBytes(payload.data().readableBytes());
         if (!payload.data().isReadable()) {
             return Mono.error(new InvalidException("Payload data is empty"));
         }
