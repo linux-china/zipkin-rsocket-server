@@ -1,0 +1,58 @@
+package org.mvnsearch.zipkin.rsocket;
+
+import io.rsocket.AbstractRSocket;
+import io.rsocket.RSocket;
+import io.rsocket.RSocketFactory;
+import io.rsocket.uri.UriTransportRegistry;
+import io.rsocket.util.DefaultPayload;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import reactor.core.publisher.Flux;
+import zipkin2.Span;
+import zipkin2.codec.SpanBytesEncoder;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * zipkin spans sender test by RSocket
+ *
+ * @author linux_china
+ */
+public class ZipkinSpansSenderTest extends AbstractRSocket {
+    private static RSocket rsocket;
+
+    @BeforeAll
+    public static void setUp() throws Exception {
+        rsocket = RSocketFactory
+                .connect()
+                .transport(UriTransportRegistry.clientForUri("ws://127.0.0.1:8080/zpkin_rsocket_collector"))
+                .start()
+                .block();
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        rsocket.dispose();
+    }
+
+    @Test
+    public void testSendSpans() throws Exception {
+        Flux.fromIterable(spans())
+                .map(SpanBytesEncoder.PROTO3::encode)
+                .map(DefaultPayload::create)
+                .flatMap(payload -> rsocket.fireAndForget(payload))
+                .then()
+                .block();
+    }
+
+
+    public List<Span> spans() {
+        Span spanRequester = Span.newBuilder().traceId(1, 1).id(1L).build();
+        Span spanBroker = Span.newBuilder().traceId(1, 1).id(2L).parentId(1).build();
+        Span spanResponder = Span.newBuilder().traceId(1, 1).id(3L).parentId(1).build();
+        return Arrays.asList(spanRequester, spanBroker, spanResponder);
+    }
+
+}
