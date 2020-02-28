@@ -27,7 +27,7 @@ public class ZipkinSpansSenderTest extends AbstractRSocket {
     public static void setUp() throws Exception {
         rsocket = RSocketFactory
                 .connect()
-                .transport(UriTransportRegistry.clientForUri("ws://127.0.0.1:8080/zpkin_rsocket_collector"))
+                .transport(UriTransportRegistry.clientForUri("tcp://127.0.0.1:42252"))
                 .start()
                 .block();
     }
