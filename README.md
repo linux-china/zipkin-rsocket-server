@@ -1,11 +1,11 @@
-Zipkin RSocket Server
-=====================
-
 Zipkin Server with RSocket Collector
+====================================
+
+Let Zipkin to receive spans by RSocket Protocol.
 
 # Why RSocket
 
-* Fast: Async and NoAck(Fire and Forget)
+* Faster: Async and NoAck(Fire and Forget)
 * Easy to integrate with Reactive System
 
 # How to start Zipkin Server
