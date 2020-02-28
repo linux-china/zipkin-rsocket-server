@@ -14,6 +14,10 @@ It's Spring Boot 2.2.x App, and you have many ways to start Spring Boot App.
 
 # How to send spans to Zipkin RSocket Collector
 
+* If you use Zipkin Brave, and you can use Zipkin Sender RSocket https://github.com/linux-china/zipkin-sender-rsocket
+
+* RSocket raw API like following?
+* 
 ```
 //create RSocket 
 RSocket rsocket = RSocketFactory
