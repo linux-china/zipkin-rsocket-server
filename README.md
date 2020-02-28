@@ -8,6 +8,10 @@ Zipkin Server with RSocket Collector
 * Fast: Async and NoAck(Fire and Forget)
 * Easy to integrate with Reactive System
 
+# How to start Zipkin Server
+
+It's Spring Boot 2.2.x App, and you have different ways to start Spring Boot App.
+
 # How to send spans to Zipkin RSocket Collector
 
 ```
