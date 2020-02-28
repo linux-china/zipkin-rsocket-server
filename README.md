@@ -18,6 +18,7 @@ It's Spring Boot 2.2.x App, and you have many ways to start Spring Boot App.
 //create RSocket 
 RSocket rsocket = RSocketFactory
                 .connect()
+                .dataMimeType("application/vnd.google.protobuf")
                 .transport(UriTransportRegistry.clientForUri("tcp://127.0.0.1:42252"))
                 .start()
                 .block();
