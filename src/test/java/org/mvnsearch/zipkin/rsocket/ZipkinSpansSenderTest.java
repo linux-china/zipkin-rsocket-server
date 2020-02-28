@@ -27,6 +27,7 @@ public class ZipkinSpansSenderTest extends AbstractRSocket {
     public static void setUp() throws Exception {
         rsocket = RSocketFactory
                 .connect()
+                .dataMimeType("application/vnd.google.protobuf")
                 .transport(UriTransportRegistry.clientForUri("tcp://127.0.0.1:42252"))
                 .start()
                 .block();
