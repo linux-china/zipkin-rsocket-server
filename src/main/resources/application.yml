@@ -3,7 +3,7 @@ spring:
     name: zipkin-rsocket-server
   rsocket:
     server:
-      mapping-path: /rsocket
+      mapping-path: /zpkin_rsocket_collector
       transport: websocket
 armeria:
   ports:
