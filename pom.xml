@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <zipkin.version>2.20.0</zipkin.version>
+        <zipkin.version>2.20.2</zipkin.version>
         <rsocket.version>1.0.0-RC6</rsocket.version>
     </properties>
 
@@ -58,7 +58,7 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-tcnative-boringssl-static</artifactId>
-            <version>2.0.29.Final</version>
+            <version>2.0.30.Final</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
