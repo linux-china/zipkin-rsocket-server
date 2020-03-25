@@ -34,3 +34,7 @@ Flux.fromIterable(spans())
                 
 ```
 
+
+# References
+
+* Distributed Tracing with Spring Cloud Sleuth and Spring Cloud Zipkin: https://dzone.com/articles/distributed-tracing-with-spring-cloud-sleuth-and-s
