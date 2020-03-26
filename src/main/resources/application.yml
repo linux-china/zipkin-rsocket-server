@@ -1,17 +1,11 @@
 spring:
   application:
     name: zipkin-rsocket-server
-  rsocket:
-    server:
-      mapping-path: /zpkin_rsocket_collector
-      transport: websocket
 armeria:
   ports:
     - port: 9411
       protocol: http
 management:
-  server:
-    port: 8888
   endpoints:
     web:
       exposure:
