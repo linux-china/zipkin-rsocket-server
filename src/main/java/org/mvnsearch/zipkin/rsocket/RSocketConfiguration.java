@@ -16,11 +16,10 @@ public class RSocketConfiguration {
 
     @Bean(destroyMethod = "dispose")
     public CloseableChannel rsocketServer(ZipkinRSocketAcceptor acceptor) {
-        return
-                RSocketFactory.receive()
-                        .acceptor(acceptor)
-                        .transport(TcpServerTransport.create("localhost", 42252))
-                        .start()
-                        .block();
+        return RSocketFactory.receive()
+                .acceptor(acceptor)
+                .transport(TcpServerTransport.create("0.0.0.0", 42252))
+                .start()
+                .block();
     }
 }
