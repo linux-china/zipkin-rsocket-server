@@ -1,39 +1,58 @@
 Zipkin Server with RSocket Collector
 ====================================
 
-Let Zipkin to receive spans by RSocket Protocol.
+Let Zipkin server to receive spans by RSocket Protocol.
 
 # Why RSocket
 
 * Faster: Async and NoAck(Fire and Forget)
 * Easy to integrate with Reactive System
 
-# How to start Zipkin Server
+# How to start Zipkin Server with Docker
 
-It's Spring Boot 2.2.x App, and you have many ways to start Spring Boot App.
-
-# How to send spans to Zipkin RSocket Collector
-
-* If you use Zipkin Brave, and you can use Zipkin Sender RSocket https://github.com/linux-china/zipkin-sender-rsocket
-
-* RSocket raw API like following?
-* 
+```yaml
+version: "3"
+services:
+  zipkin:
+    image: linuxchina/zipkin-rsocket-server
+    ports:
+      - "9411:9411"
+      - "42252:42252"
 ```
-//create RSocket 
-RSocket rsocket = RSocketFactory
+
+# How to use it in Spring Boot
+
+If you use "org.springframework.cloud:spring-cloud-starter-zipkin" and it's easy.
+
+* Add following configuration in your application.properties
+
+```
+spring.autoconfigure.exclude=org.springframework.cloud.sleuth.zipkin2.ZipkinBackwardsCompatibilityAutoConfiguration
+spring.zipkin.base-url=tcp://127.0.0.1:42252
+spring.zipkin.encoder=proto3
+spring.sleuth.sampler.rate=10
+```
+
+* Create RSocket and Zipkin Sender beans
+
+```
+    @Bean
+    public RSocket rsocket(@Value("${spring.zipkin.base-url}") String zipkinBaseUrl) {
+        return RSocketFactory
                 .connect()
                 .dataMimeType("application/vnd.google.protobuf")
-                .transport(UriTransportRegistry.clientForUri("tcp://127.0.0.1:42252"))
+                .transport(UriTransportRegistry.clientForUri(zipkinBaseUrl))
                 .start()
                 .block();
-//send spans
-Flux.fromIterable(spans())
-                .map(SpanBytesEncoder.PROTO3::encode)
-                .map(DefaultPayload::create)
-                .flatMap(payload -> rsocket.fireAndForget(payload))
-                
+    }
+
+    @Bean(ZipkinAutoConfiguration.SENDER_BEAN_NAME)
+    public Sender zipkinRSocketSender(RSocket rsocket) {
+        return new RSocketSender(rsocket);
+    }
 ```
 
+* Start your application
 
 # References
 
