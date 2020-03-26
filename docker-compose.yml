@@ -1,0 +1,7 @@
+version: "3"
+services:
+  zipkin:
+    image: linuxchina/zipkin-rsocket-server
+    ports:
+      - "9411:9411"
+      - "42252:42252"
