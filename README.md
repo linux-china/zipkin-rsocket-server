@@ -64,6 +64,8 @@ spring.sleuth.sampler.rate=10
 
 * Start your application
 
+The demo repository: https://github.com/linux-china/spring-boot-zipkin-demo
+
 # References
 
 * Distributed Tracing with Spring Cloud Sleuth and Spring Cloud Zipkin: https://dzone.com/articles/distributed-tracing-with-spring-cloud-sleuth-and-s
