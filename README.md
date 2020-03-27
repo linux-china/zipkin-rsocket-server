@@ -30,6 +30,11 @@ If you use "org.springframework.cloud:spring-cloud-starter-zipkin" and it's easy
 
 ```xml
 <dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-zipkin</artifactId>
+  <version>2.2.2.RELEASE</version>
+</dependency>
+<dependency>
   <groupId>org.mvnsearch</groupId>
   <artifactId>zipkin-sender-rsocket</artifactId>
   <version>2.12.1</version>
