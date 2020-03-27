@@ -24,6 +24,16 @@ services:
 
 If you use "org.springframework.cloud:spring-cloud-starter-zipkin" and it's easy.
 
+* Include "zipkin-sender-rsocket" dependency as following
+
+```xml
+<dependency>
+  <groupId>org.mvnsearch</groupId>
+  <artifactId>zipkin-sender-rsocket</artifactId>
+  <version>2.12.1</version>
+</dependency>
+```
+
 * Add following configuration in your application.properties
 
 ```
