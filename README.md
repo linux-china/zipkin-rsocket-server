@@ -1,5 +1,7 @@
 Zipkin Server with RSocket Collector
 ====================================
+[![Maven](https://img.shields.io/maven-central/v/org.mvnsearch/zipkin-sender-rsocket)](https://repo1.maven.org/maven2/org/mvnsearch/zipkin-sender-rsocket/)
+[![Docker Image](https://img.shields.io/docker/v/linuxchina/zipkin-rsocket-server?label=Docker%20Image)](https://hub.docker.com/r/linuxchina/zipkin-rsocket-server)
 
 Let Zipkin server to receive spans by RSocket Protocol.
 
