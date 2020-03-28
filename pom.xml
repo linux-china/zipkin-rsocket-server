@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <zipkin.version>2.20.2</zipkin.version>
+        <zipkin.version>2.21.0</zipkin.version>
         <rsocket.version>1.0.0-RC6</rsocket.version>
     </properties>
 
