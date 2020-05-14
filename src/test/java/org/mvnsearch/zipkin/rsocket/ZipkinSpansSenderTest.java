@@ -2,8 +2,8 @@ package org.mvnsearch.zipkin.rsocket;
 
 import io.rsocket.AbstractRSocket;
 import io.rsocket.RSocket;
-import io.rsocket.RSocketFactory;
-import io.rsocket.uri.UriTransportRegistry;
+import io.rsocket.core.RSocketConnector;
+import io.rsocket.transport.netty.client.TcpClientTransport;
 import io.rsocket.util.DefaultPayload;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -25,11 +25,9 @@ public class ZipkinSpansSenderTest extends AbstractRSocket {
 
     @BeforeAll
     public static void setUp() throws Exception {
-        rsocket = RSocketFactory
-                .connect()
+        rsocket = RSocketConnector.create()
                 .dataMimeType("application/vnd.google.protobuf")
-                .transport(UriTransportRegistry.clientForUri("tcp://127.0.0.1:42252"))
-                .start()
+                .connect(TcpClientTransport.create("127.0.0.1", 42252))
                 .block();
     }
 
