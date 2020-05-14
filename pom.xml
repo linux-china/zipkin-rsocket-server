@@ -17,7 +17,7 @@
     <properties>
         <java.version>11</java.version>
         <zipkin.version>2.21.1</zipkin.version>
-        <rsocket.version>1.0.0-RC6</rsocket.version>
+        <rsocket.version>1.0.0</rsocket.version>
     </properties>
 
     <dependencies>
@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>28.2-jre</version>
+            <version>29.0-jre</version>
         </dependency>
         <!--rsocket-->
         <dependency>
