@@ -1,6 +1,5 @@
 package org.mvnsearch.zipkin.rsocket;
 
-import io.rsocket.AbstractRSocket;
 import io.rsocket.RSocket;
 import io.rsocket.core.RSocketConnector;
 import io.rsocket.transport.netty.client.TcpClientTransport;
@@ -20,7 +19,7 @@ import java.util.List;
  *
  * @author linux_china
  */
-public class ZipkinSpansSenderTest extends AbstractRSocket {
+public class ZipkinSpansSenderTest implements RSocket {
     private static RSocket rsocket;
 
     @BeforeAll
