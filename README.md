@@ -29,16 +29,18 @@ If you use "org.springframework.cloud:spring-cloud-starter-zipkin" and it's easy
 * Include "zipkin-sender-rsocket" dependency as following
 
 ```xml
-<dependency>
-  <groupId>org.springframework.cloud</groupId>
-  <artifactId>spring-cloud-starter-zipkin</artifactId>
-  <version>2.2.2.RELEASE</version>
-</dependency>
-<dependency>
-  <groupId>org.mvnsearch</groupId>
-  <artifactId>zipkin-sender-rsocket</artifactId>
-  <version>2.12.1</version>
-</dependency>
+<dependencies>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-zipkin</artifactId>
+      <version>2.2.6.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mvnsearch</groupId>
+      <artifactId>zipkin-sender-rsocket</artifactId>
+      <version>2.12.1</version>
+    </dependency>
+</dependencies>
 ```
 
 * Add following configuration in your application.properties
