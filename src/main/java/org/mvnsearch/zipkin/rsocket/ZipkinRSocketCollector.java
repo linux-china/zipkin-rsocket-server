@@ -1,7 +1,7 @@
 package org.mvnsearch.zipkin.rsocket;
 
-import io.rsocket.AbstractRSocket;
 import io.rsocket.Payload;
+import io.rsocket.RSocket;
 import io.rsocket.exceptions.ApplicationErrorException;
 import io.rsocket.exceptions.InvalidException;
 import org.springframework.scheduling.concurrent.ConcurrentTaskExecutor;
@@ -20,9 +20,9 @@ import zipkin2.storage.StorageComponent;
  * @author linux_china
  */
 @Component
-public class ZipkinRSocketCollector extends AbstractRSocket {
-    private Collector collector;
-    private CollectorMetrics metrics;
+public class ZipkinRSocketCollector implements RSocket {
+    private final Collector collector;
+    private final CollectorMetrics metrics;
     private final ConcurrentTaskExecutor concurrentTaskExecutor = new ConcurrentTaskExecutor();
 
     public ZipkinRSocketCollector(StorageComponent storage,
