@@ -33,7 +33,7 @@ If you use "org.springframework.cloud:spring-cloud-starter-zipkin" and it's easy
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-zipkin</artifactId>
-      <version>2.2.6.RELEASE</version>
+      <version>2.2.8.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.mvnsearch</groupId>
